@@ -104,3 +104,80 @@ nav { background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); position: stick
 
 footer { text-align: center; padding: 60px; border-top: 1px solid #222; }
 footer a { color: var(--primary); text-decoration: none; }
+
+/* --- RESPONSIVE DESIGN --- */
+
+/* Tablettes et petits ordinateurs */
+@media (max-width: 1024px) {
+    .nav-container {
+        grid-template-columns: 1fr 1fr; /* On réduit à 2 colonnes */
+        padding: 0 5%;
+    }
+    
+    .nav-links {
+        display: none; /* On cache les liens pour éviter qu'ils chevauchent le logo */
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+}
+
+/* Mobiles (Smartphones) */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin: 50px 0 30px;
+    }
+
+    /* Processus : On passe de 3 colonnes à 1 colonne empilée */
+    .steps-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .step {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    /* Carrousel : On réduit la taille des images pour mobile */
+    .carousel-track img {
+        min-width: 280px;
+        height: 160px;
+    }
+
+    @keyframes scrollCarousel {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-310px * 4)); } /* Ajusté : largeur image (280) + gap (30) */
+    }
+
+    /* Portfolio : 1 seule colonne sur mobile */
+    .grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+
+    /* FAQ : On ajuste les textes */
+    .faq-question h4 {
+        font-size: 0.95rem;
+        padding-right: 10px;
+    }
+
+    /* Lightbox : flèches plus petites */
+    .prev-btn, .next-btn {
+        font-size: 2rem;
+        padding: 10px;
+    }
+
+    .close {
+        top: 10px;
+        right: 20px;
+        font-size: 35px;
+    }
+}

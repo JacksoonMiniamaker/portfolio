@@ -2,6 +2,12 @@
 document.querySelectorAll('.faq-question').forEach(q => {
     q.addEventListener('click', () => {
         const item = q.parentElement;
+        
+        // Optionnel : Ferme les autres questions quand on en ouvre une
+        document.querySelectorAll('.faq-item').forEach(other => {
+            if (other !== item) other.classList.remove('active');
+        });
+
         item.classList.toggle('active');
     });
 });
