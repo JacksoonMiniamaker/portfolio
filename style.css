@@ -6,7 +6,7 @@
     --text-dim: #888;
 }
 
-/* Empeche les débordements de boîtes (Padding/Borders) */
+/* Règle indispensable pour que les bordures et paddings ne fassent pas déborder les éléments */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -20,7 +20,7 @@ body {
     background-color: var(--bg); 
     color: var(--text); 
     margin: 0; 
-    overflow-x: hidden; /* Sécurité anti-scroll horizontal */
+    overflow-x: hidden; /* Sécurité ultime anti-scroll horizontal */
 }
 
 /* --- NAVIGATION --- */
@@ -41,6 +41,7 @@ nav {
     max-width: 1400px; 
     margin: 0 auto; 
     padding: 0 5%; 
+    width: 100%;
 }
 
 .logo { 
@@ -95,12 +96,14 @@ nav {
     font-size: 2.5rem; 
     margin: 80px 0 50px; 
     padding: 0 20px;
+    width: 100%;
 }
 
 /* --- HERO --- */
 .hero { 
     padding: 100px 20px; 
     text-align: center; 
+    width: 100%;
 }
 
 .hero h1 { 
@@ -164,25 +167,37 @@ nav {
     width: 60%; 
 }
 
-/* --- PROCESS (3 ÉTAPES) --- */
+/* --- PROCESS (LES 3 ÉTAPES) - CORRIGÉ --- */
+.process-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .steps-container { 
     display: flex; 
-    justify-content: center; 
+    justify-content: center; /* Centre les boîtes sur PC */
+    align-items: stretch;
     gap: 25px; 
     max-width: 1200px; 
     margin: 0 auto; 
     padding: 0 20px; 
-    flex-wrap: wrap; /* Important pour le passage à la ligne */
+    width: 100%;
 }
 
 .step { 
     flex: 1; 
     min-width: 280px; 
+    max-width: 380px; /* Empêche les boîtes d'être trop larges sur PC */
     text-align: center; 
     padding: 25px; 
     border-radius: 15px; 
     background: #111; 
     border: 1px solid #222; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .step img { 
@@ -349,10 +364,7 @@ nav {
     transition: 0.3s; 
 }
 
-.prev-btn:hover, .next-btn:hover { 
-    color: var(--primary); 
-}
-
+.prev-btn:hover, .next-btn:hover { color: var(--primary); }
 .prev-btn { left: 5%; } 
 .next-btn { right: 5%; }
 
@@ -370,6 +382,7 @@ nav {
     pointer-events: none; 
 }
 
+/* --- FOOTER --- */
 footer { 
     text-align: center; 
     padding: 60px; 
@@ -381,7 +394,7 @@ footer a {
     text-decoration: none; 
 }
 
-/* --- RESPONSIVE FINAL --- */
+/* --- RESPONSIVE FINAL - CORRIGÉ --- */
 
 @media (max-width: 1024px) {
     .nav-container {
@@ -395,20 +408,20 @@ footer a {
     .hero h1 { font-size: 2.2rem; }
     .section-title { font-size: 1.8rem; }
 
-    /* Étapes Processus : On force l'empilement propre */
+    /* Centrage parfait sur mobile */
     .steps-container {
         flex-direction: column;
-        align-items: center;
-        padding: 0 15px;
+        align-items: center; /* Centre les boîtes verticalement l'une sous l'autre */
+        padding: 0 20px;
     }
 
     .step {
         width: 100%;
-        max-width: 100%; /* S'adapte à la largeur du téléphone */
-        min-width: unset; /* Retire la sécurité min-width pour mobile */
+        max-width: 100%; /* S'adapte à la largeur du mobile */
+        min-width: unset;
+        margin-bottom: 20px;
     }
 
-    /* Carrousel : On réduit la taille pour mobile */
     .carousel-track img {
         min-width: 250px;
         height: 150px;
